@@ -41,12 +41,28 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'token',
+        // 'api' => [
+        //     'driver' => 'token',
+        //     'provider' => 'users',
+        //     'hash' => false,
+        // ],
+        'users' => [
+            'driver' => 'jwt',
             'provider' => 'users',
-            'hash' => false,
-        ],
+          ],
+            
+    
+        'ngos' => [
+            'driver' => 'jwt',
+            'provider' => 'ngos',
+        ],  
+        'businesses' => [
+            'driver' => 'jwt',
+            'provider' => 'businesses',
+        ], 
+    
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -69,6 +85,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'ngos' => [
+            'driver' => 'eloquent',
+            'model' => App\Ngo::class,
+        ],   
+        'businesses' => [
+            'driver' => 'eloquent',
+            'model' => App\Business::class,
         ],
 
         // 'users' => [

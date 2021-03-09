@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::post('/register', 'AdminAuthController@register');
+Route::post('/login', 'AdminAuthController@login');
+Route::post('/logout', 'AdminAuthController@logout');
+
+
+
+Route::post('/ngo/register', 'NgoAuthController@register');
+Route::post('/ngo/login', 'NgoAuthController@login');
+Route::post('/ngo/logout', 'NgoAuthController@logout');
+
+Route::post('/business/register', 'BusinessAuthController@register');
+Route::post('/business/login', 'BusinessAuthController@login');
+Route::post('/business/logout', 'BusinessAuthController@logout');
