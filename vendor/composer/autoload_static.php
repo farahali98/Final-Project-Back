@@ -496,13 +496,22 @@ class ComposerStaticInit95a0c0678eda1313f4cdc71da0af6636
     );
 
     public static $classMap = array (
+        'App\\Appliances' => __DIR__ . '/../..' . '/app/Appliances.php',
         'App\\Business' => __DIR__ . '/../..' . '/app/Business.php',
+        'App\\Clothe' => __DIR__ . '/../..' . '/app/Clothe.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Food' => __DIR__ . '/../..' . '/app/Food.php',
         'App\\Http\\Controllers\\AdminAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminAuthController.php',
+        'App\\Http\\Controllers\\AdminsController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminsController.php',
+        'App\\Http\\Controllers\\AppliancesController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppliancesController.php',
         'App\\Http\\Controllers\\BusinessAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/BusinessAuthController.php',
+        'App\\Http\\Controllers\\BusinessController' => __DIR__ . '/../..' . '/app/Http/Controllers/BusinessController.php',
+        'App\\Http\\Controllers\\ClothesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClothesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\FoodController' => __DIR__ . '/../..' . '/app/Http/Controllers/FoodController.php',
         'App\\Http\\Controllers\\NgoAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/NgoAuthController.php',
+        'App\\Http\\Controllers\\NgosController' => __DIR__ . '/../..' . '/app/Http/Controllers/NgosController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',

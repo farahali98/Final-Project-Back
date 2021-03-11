@@ -6,13 +6,22 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Appliances' => $baseDir . '/app/Appliances.php',
     'App\\Business' => $baseDir . '/app/Business.php',
+    'App\\Clothe' => $baseDir . '/app/Clothe.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Food' => $baseDir . '/app/Food.php',
     'App\\Http\\Controllers\\AdminAuthController' => $baseDir . '/app/Http/Controllers/AdminAuthController.php',
+    'App\\Http\\Controllers\\AdminsController' => $baseDir . '/app/Http/Controllers/AdminsController.php',
+    'App\\Http\\Controllers\\AppliancesController' => $baseDir . '/app/Http/Controllers/AppliancesController.php',
     'App\\Http\\Controllers\\BusinessAuthController' => $baseDir . '/app/Http/Controllers/BusinessAuthController.php',
+    'App\\Http\\Controllers\\BusinessController' => $baseDir . '/app/Http/Controllers/BusinessController.php',
+    'App\\Http\\Controllers\\ClothesController' => $baseDir . '/app/Http/Controllers/ClothesController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\FoodController' => $baseDir . '/app/Http/Controllers/FoodController.php',
     'App\\Http\\Controllers\\NgoAuthController' => $baseDir . '/app/Http/Controllers/NgoAuthController.php',
+    'App\\Http\\Controllers\\NgosController' => $baseDir . '/app/Http/Controllers/NgosController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
