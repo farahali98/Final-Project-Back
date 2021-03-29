@@ -1,7 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Ngo;
 class NgosController extends Controller
@@ -27,23 +26,31 @@ class NgosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $image = $request->file('image');
+        $path = Storage::disk('public')->put('images', $image);
+        // preg_match_all('([+|-]*[0-9]+[/.]+[0-9]+)',$request['location'],$matches);    
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
             'password'=>'required|min:6',
             'location'=>'required',
-          ]);
-        
-          $ngo=Ngo::create([
-            'name'=>$validatedData['name'],
-            'email'=>$validatedData['email'],
-            'password'=>$validatedData['password'],
-            'location'=>$validatedData['location'],
+            'url'=>'required',
+            'phone_number'=>'required',]);
+             $ngo=Ngo::create([
+             'name'=>$validatedData['name'],
+             'email'=>$validatedData['email'],
+             'password'=>$validatedData['password'],
+             'location'=>$validatedData['location'],
+             'url'=>$validatedData['url'],
+             'phone_number'=>$validatedData['phone_number'],
+             'image'=>$path,
+            //  'xcoordinate'=>floatval($matches[0][0]),
+            //  'ycoordinate'=>floatval($matches[0][1]),
+
         ]);
         return response()->json(['message'=>'new ngo added',
-        'ngo'=>$ngo]);
-        }
+        'ngo'=>$ngo]);}
 
     /**
      * Display the specified resource.
@@ -53,7 +60,7 @@ class NgosController extends Controller
      */
     public function details($id){
         $ngo = Ngo::where('id',$id)->first();
-    return response()->json([ 'business'=>$ngo]);}
+    return response()->json([ 'ngo'=>$ngo]);}
     /**
      * Show the form for editing the specified resource.
      *
@@ -71,15 +78,20 @@ class NgosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $image = $request->file('image');
+        $path = Storage::disk('public')->put('images', $image);
         $data=$request->all();
         $ngo=Ngo::where('id',$id)->first();
         $ngo->name=$data['name'];
         $ngo->email=$data['email'];
         $ngo->password=$data['password'];
         $ngo->location=$data['location'];
-
-
+        $ngo->url=$data['url'];
+        $ngo->phone_number=$data['phone_number'];
+        $ngo->image=$path;
+        // preg_match_all('([+|-]*[0-9]+[/.]+[0-9]+)',$request['location'],$matches);    
+        // $ngo->xcoordinate=floatval($matches[0][0]);
+        // $ngo->ycoordinate=floatval($matches[0][1]);
         $ngo->save();
         return response()->
         json([

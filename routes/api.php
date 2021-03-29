@@ -73,3 +73,19 @@ Route::post('/appliance','AppliancesController@store');
 Route::get('/appliance/{id}','AppliancesController@details');
 Route::put('/appliance/{id}','AppliancesController@update');
 Route::delete('/appliance/{id}','AppliancesController@destroy');
+
+
+Route::get('/testimonial','TestimonialsController@index');
+Route::post('/testimonial','TestimonialsController@store');
+Route::get('/testimonial/{id}','TestimonialsController@details');
+Route::put('/testimonial/{id}','TestimonialsController@update');
+Route::delete('/testimonial/{id}','TestimonialsController@destroy');
+
+
+
+Route::group(['prefix' => 'business', 'middleware' => ['assign.guard:businesses','jwt.auth']],function ()
+{
+    Route::get('/business','BusinessController@index');
+    // Route::put('update/{id}','BusinessController@update');
+
+});

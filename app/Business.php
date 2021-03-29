@@ -13,7 +13,7 @@ protected $guard='businesses';
    * @var array
    */
   protected $fillable = [
-      'name', 'email', 'password','location',
+      'name', 'email', 'password','location','url','image','phone_number'
   ];
 
   /**
@@ -49,4 +49,6 @@ protected $guard='businesses';
             $this->attributes['password'] = bcrypt($password);
         }
     }    
-  }
+    public function Food(){
+        return $this->hasMany(Food::class,'business_id');
+    }  }

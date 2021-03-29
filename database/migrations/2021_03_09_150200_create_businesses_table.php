@@ -17,10 +17,15 @@ class CreateBusinessesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
+            $table->string('image');
+            $table->string('phone_number');
+            $table->string('url');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            // $table->decimal('xcoordinate',$precision = 20, $scale = 10);
+            // $table->decimal('ycoordinate',$precision = 20, $scale = 10);
             $table->timestamps();
         });
     }

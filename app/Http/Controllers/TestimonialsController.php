@@ -1,16 +1,19 @@
 <?php
+
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Food;
-use App\Business;
-class FoodController extends Controller
+use Illuminate\Http\Request;
+use App\Testimonial;
+class TestimonialsController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-
-        return Food::with('Business')->get();
-
+        return Testimonial::all();
     }
 
     /**
@@ -18,7 +21,10 @@ class FoodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -27,28 +33,22 @@ class FoodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        
+    { 
         $image = $request->file('image');
         $path = Storage::disk('public')->put('images', $image);
         $data=$request->all();
-        $food=new Food();
-        $food->name=$data['name'];
-        $food->type=$data['type'];
-        $food->business_id=$data['business_id'];
-        $food->image=$path;
-        $food->cooked_at=$data['cooked_at'];
-        $food->quantity=$data['quantity'];
-        $food->save();
-        return response()->
-        json([
-            'status'=>200,
-            'food'=>$food
+        $testimonial=new Testimonial();
+        $testimonial->name=$data['name'];
+       $testimonial->content=$data['content'];
+       $testimonial->image=$path;
+       $testimonial->save();
+       return response()->json(['message'=>'new testimonial created',
+                                'testimonial'=>$testimonial        ]);
+       }
 
-        ]);
 
-         
-        }
+
+    
 
     /**
      * Display the specified resource.
@@ -56,16 +56,21 @@ class FoodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function details($id){
-        $food = Food::where('id',$id)->first();
-    return response()->json([ 'food'=>$food]);}
+    public function show($id)
+    {
+        //
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+    public function edit($id)
+    {
+        //
+    }
 
     /**
      * Update the specified resource in storage.
@@ -76,24 +81,23 @@ class FoodController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
         $image = $request->file('image');
         $path = Storage::disk('public')->put('images', $image);
         $data=$request->all();
-        $food=Food::where('id',$id)->first();
-        $food->name=$data['name'];
-        $food->business_id=$data['business_id'];
-        $food->type=$data['type'];
-        $food->quantity=$data['quantity'];
-        $food->cooked_at=$data['cooked_at'];
-        $food->image=$path;
-        $food->save();
+        $testimonial=Testimonial::where('id',$id)->first();
+        $testimonial->name=$data['name'];
+        $testimonial->content=$data['content'];
+        $testimonial->image=$path;
+        $testimonial->save();
         return response()->
         json([
             'status'=>200,
-            'food'=>$food
+            'testimonial'=>$testimonial
 
         ]);  
-     }
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -102,6 +106,8 @@ class FoodController extends Controller
      */
     public function destroy($id)
     {
-        Food::find($id)->delete();
+        //
+        $testimonial=Testimonial::where('id',$id)->first()->delete();
+        return 'deleted';
     }
 }

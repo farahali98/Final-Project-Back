@@ -16,7 +16,7 @@ class Ngo extends Authenticatable implements JWTSubject
    * @var array
    */
   protected $fillable = [
-      'name', 'email', 'password','location',
+      'name', 'email', 'password','location','url','image','phone_number'
   ];
 
   /**
